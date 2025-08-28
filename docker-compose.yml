@@ -1,23 +1,30 @@
 version: '3.8'
+
 services:
+  app:
+    build: .
+    ports:
+      - "8080:8080" # 웹 앱 포트만 외부에 노출
+    environment:
+      # .env 파일 사용을 권장합니다.
+      DATABASE_URL: postgres://user:password@db:5432/immutable_db
+      # API 키 같은 민감 정보는 Docker secrets나 .env 파일로 관리
+      MY_API_KEY: your-very-secret-api-key 
+    depends_on:
+      - db
+    
   db:
     image: postgres:15-alpine
+    restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: immutable_db
-    ports:
-      - "5432:5432"
+    # 외부 포트 노출을 제거하여 보안 강화
+    # ports:
+    #   - "5432:5432" 
     volumes:
       - pgdata:/var/lib/postgresql/data
-  app:
-    build: .
-    ports:
-      - "8080:8080"
-    environment:
-      DATABASE_URL: postgres://user:password@db:5432/immutable_db
-      MY_API_KEY: your-very-secret-api-key
-    depends_on:
-      - db
+
 volumes:
   pgdata:
