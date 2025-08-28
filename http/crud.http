@@ -1,0 +1,47 @@
+@apiKey = apikey
+@baseUrl = http://localhost:8080
+
+### 헬스 체크
+GET {{baseUrl}}/health
+x-api-key: {{apiKey}}
+
+### 전체 레코드 목록 조회
+GET {{baseUrl}}/records
+x-api-key: {{apiKey}}
+
+### 특정 레코드 조회
+GET {{baseUrl}}/records/my-data-key
+x-api-key: {{apiKey}}
+
+### 레코드 생성
+POST {{baseUrl}}/records
+x-api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "key": "my-data-key",
+  "data": {
+    "name": "example_name",
+    "value": 123
+  }
+}
+
+### 특정 레코드 수정 (PUT)
+PUT {{baseUrl}}/records/my-data-key
+x-api-key: {{apiKey}}
+Content-Type: application/json
+
+{
+  "data": {
+    "name": "updated_name",
+    "value": 456
+  }
+}
+
+### 특정 레코드 삭제
+DELETE {{baseUrl}}/records/my-data-key
+x-api-key: {{apiKey}}
+
+### 특정 레코드의 히스토리 조회
+GET {{baseUrl}}/records/my-data-key/history
+x-api-key: {{apiKey}}
