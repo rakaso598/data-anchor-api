@@ -25,7 +25,8 @@
     "docker:logs": "docker-compose logs -f",
     "docker:ps": "docker-compose ps",
     "docker:tag": "docker tag data-anchor-api rakaso598/data-anchor-api:latest",
-    "docker:push": "docker push rakaso598/data-anchor-api:latest"
+    "docker:push": "docker push rakaso598/data-anchor-api:latest",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
