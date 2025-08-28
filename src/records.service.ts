@@ -93,7 +93,7 @@ export class RecordsService {
         data: {
           key,
           version: last.version + 1,
-          data: last.data,
+          data: last.data as any, // 타입 오류 우회
           status: 'deleted',
           prevHash: last.hash || null,
           hash: null,
