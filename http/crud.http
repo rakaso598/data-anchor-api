@@ -1,5 +1,5 @@
-@apiKey = <발급받은-API-KEY>
-@baseUrl = http://localhost:8080/
+@apiKey = apikey
+@baseUrl = http://localhost:8080
 
 ### 헬스 체크
 GET {{baseUrl}}/health
