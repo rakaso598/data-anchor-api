@@ -29,10 +29,10 @@ WORKDIR /app
 # Copy only production-related files from the builder stage
 # This keeps the final image small
 COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/dist ./dist
-# pnpm은 별도로 설치하거나, --prod 옵션으로 의존성을 설치해야 합니다.
-# pnpm은 node_modules를 복사하는 대신 캐시를 활용하는 것이 더 효율적입니다.
 RUN npm install -g pnpm && pnpm install --prod
+RUN pnpm prisma generate
 
 # Expose the port the app runs on
 EXPOSE 8080
