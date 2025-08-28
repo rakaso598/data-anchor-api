@@ -13,7 +13,7 @@ RUN npm install -g pnpm
 # Install dependencies
 RUN pnpm install --frozen-lockfile
 
-# Generate Prisma Client
+# Generate Prisma Client (의존성 설치 후 반드시 실행)
 RUN pnpm prisma generate
 
 # Copy the rest of the application code
