@@ -23,7 +23,9 @@
     "docker:dev": "docker-compose up --build",
     "docker:down": "docker-compose down",
     "docker:logs": "docker-compose logs -f",
-    "docker:ps": "docker-compose ps"
+    "docker:ps": "docker-compose ps",
+    "docker:tag": "docker tag data-anchor-api rakaso598/data-anchor-api:latest",
+    "docker:push": "docker push rakaso598/data-anchor-api:latest"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
