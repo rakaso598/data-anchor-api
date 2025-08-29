@@ -6,6 +6,9 @@ import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // CORS 활성화
+  app.enableCors();
+
   // Swagger 설정
   const config = new DocumentBuilder()
     .setTitle('Immutable Data API')
